@@ -1,0 +1,46 @@
+{
+  "name": "rails-security-checklist",
+  "version": "1.0.0",
+  "description": "A checklist for performing a basic security check of a Ruby on Rails application.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chznbaum/rails-security-checklist.git"
+  },
+  "keywords": [
+    "ruby on rails",
+    "cybersecurity",
+    "security checklist"
+  ],
+  "author": "Chazona Baum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chznbaum/rails-security-checklist/issues"
+  },
+  "homepage": "https://railssecuritychecklist.com",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.6",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-imagemin": "^4.0.0",
+    "gulp-notify": "^3.0.0",
+    "gulp-postcss": "^7.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^8.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-usemin": "^0.3.28",
+    "gulp-watch": "^4.3.11",
+    "webpack": "^3.8.1"
+  }
+}

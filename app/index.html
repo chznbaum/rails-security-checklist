@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rails Security Checklist</title>
+  <meta name="keywords">
+  <meta name="description">
+
+  <!-- build:css assets/css/styles.css -->
+  <link rel="stylesheet" href="./temp/css/styles.css">
+  <!-- endbuild -->
+
+  <!-- build:js assets/js/vendor.js -->
+  <script src="/temp/js/vendor.js"></script>
+  <!-- endbuild -->
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a href="#" class="navbar-brand">Rails Security Checklist</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="./about.html" class="nav-link">About</a>
+            </li>
+            <li class="nav-item">
+              <a href="http://guides.rubyonrails.org/security.html" class="nav-link">RailsGuides</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main class="container mb-5" role="main">
+    <h1 class="mt-5">The Rails Security Checklist</h1>
+    <p class="lead">Get a jumpstart on securing your next Ruby on Rails application by going through the following checklist.</p>
+    <div class="alert alert-warning" role="alert">
+      Note: This list is not exhaustive. For further reading, I suggest reviewing resources like the <a href="http://guides.rubyonrails.org/security.html" class="alert-link">Rails Security Guides</a>.
+    </div>
+    <form>
+      <div class="form-group">
+        <input type="checkbox" name="authorizedAccess" id="authorizedAccess">
+        <label for="authorizedAccess">Limit unauthorized access (i.e.: <code>@project = @current_user.projects.find(params[:id])</code> instead of <code>@project = Project.find(params[:id])</code>)</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="authSolution" id="authSolution">
+        <label for="authSolution">Use a well-tested authentication solution like <a href="https://github.com/plataformatec/devise">Devise</a>, <a href="https://github.com/Sorcery/sorcery">Sorcery</a> or <a href="https://github.com/binarylogic/authlogic">Authlogic</a></label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="hashPasswords" id="hashPasswords">
+        <label for="hashPasswords"><strong>No</strong> clear-text passwords - only save a hash</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="saltPasswords" id="saltPasswords">
+        <label for="saltPasswords">Use a salt when hashing passwords</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="htstHeader" id="htstHeader">
+        <label for="htstHeader">Use HTST header to require HTTPS in production</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="filterLogs" id="filterLogs">
+        <label for="filterLogs">Filter sensitive data from logs using the <code>config/initializers/filter_parameter_logging.rb</code> file</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="csrfException" id="csrfException">
+        <label for="csrfException">Leave <code>protect_from_forgery with: :exception</code> alone</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="strongParams" id="strongParams">
+        <label for="strongParams">Use strong params to whitelist values used when creating or updating records (i.e.: <code>params.require(:thing).permit(:name, :description)</code>)</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="throttleRequests" id="throttleRequests">
+        <label for="throttleRequests">Throttle requests to a few per minute on pages like the login page</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="lockouts" id="lockouts">
+        <label for="lockouts">Implement short-term lockouts for users with too many failed password attempts</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="encryptSecrets" id="encryptSecrets">
+        <label for="encryptSecrets">Encrypt any production secrets or database credentials that will be committed to the repository</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="envVariables" id="envVariables">
+        <label for="envVariables">Consider not using environment variables for secrets</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="securityAnnouncements" id="securityAnnouncements">
+        <label for="securityAnnouncements">Subscribe to updates from the <a href="https://groups.google.com/forum/#!forum/rubyonrails-security">Rails security mailing list</a></label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="checkDependencies" id="checkDependencies">
+        <label for="checkDependencies">Use <a href="https://github.com/rubysec/bundler-audit">bundler-audit</a> to check app dependencies for vulnerabilities</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="vulnerabilityScan" id="vulnerabilityScan">
+        <label for="vulnerabilityScan">Use Brakeman to check the code for issues like Cross Site Scripting, Denial of Service and SQL Injection</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="adminPages" id="adminPages">
+        <label for="adminPages">Consider separating superuser admin panel to a subdomain like <code>admin.example.com</code></label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="unprivilegedUser" id="unprivilegedUser">
+        <label for="unprivilegedUser">Run the application as a non-root user</label>
+      </div>
+      <div class="form-group">
+        <input type="checkbox" name="userInput" id="userInput">
+        <label for="userInput">Sanitize or escape user input if using <code>html_safe</code></label>
+      </div>
+    </form>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <span class="text-muted">&copy; <script>document.write(new Date().getFullYear());</script> <a href="https://chazonabaum.com">Chazona Baum</a></span>
+    </div>
+  </footer>
+  <!-- build:js assets/js/app.js -->
+  <script src="/temp/js/app.js"></script>
+  <!-- endbuild -->
+</body>
+</html>
